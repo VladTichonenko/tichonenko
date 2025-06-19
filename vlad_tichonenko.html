@@ -1,0 +1,2029 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тихоненко Владислав</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --primary-light: #818cf8;
+            --secondary: #10b981;
+            --accent: #f59e0b;
+            --dark: #0f172a;
+            --darker: #020617;
+            --light: #f8fafc;
+            --light-gray: #e2e8f0;
+            --gray: #94a3b8;
+            --dark-gray: #475569;
+            --card-bg: rgba(15, 23, 42, 0.7);
+            --card-bg-hover: rgba(30, 41, 59, 0.9);
+            --badge-new: #10b981;
+            --badge-best: #f59e0b;
+            --glass: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.15);
+            --shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+            --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.2);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --gradient: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            --gradient-accent: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            --border-radius: 16px;
+            --section-padding: 80px 0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        body {
+            background-color: var(--darker);
+            color: var(--light-gray);
+            line-height: 1.6;
+            overflow-x: hidden;
+            font-weight: 400;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: var(--section-padding);
+            position: relative;
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--light);
+            line-height: 1.2;
+            font-weight: 700;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+        }
+
+        h2 {
+            font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+        }
+
+        h3 {
+            font-size: clamp(1.5rem, 2.5vw, 1.8rem);
+        }
+
+        p {
+            color: var(--gray);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 14px 24px;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            outline: none;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            font-size: 1rem;
+            white-space: nowrap;
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: rgba(99, 102, 241, 0.1);
+            border-color: var(--primary-light);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-new {
+            background-color: var(--badge-new);
+            color: white;
+        }
+
+        .badge-best {
+            background-color: var(--badge-best);
+            color: var(--darker);
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 15px 0;
+            background: rgba(2, 6, 23, 0.95);
+            border-bottom: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            padding: 10px 0;
+            box-shadow: var(--shadow);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gradient);
+            border-radius: 6px;
+            color: white;
+            font-size: 12px;
+        }
+
+        .desktop-nav {
+            display: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-link {
+            color: var(--light-gray);
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .mobile-menu-btn {
+            background: none;
+            border: none;
+            color: var(--light);
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .mobile-menu-btn:hover {
+            background: var(--glass);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            margin-bottom: 20px;
+            background: linear-gradient(to right, var(--light), var(--light-gray));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            margin-bottom: 30px;
+            color: var(--gray);
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 40px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+       .hero-actions {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 40px;
+            justify-content: center;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            padding: 12px 15px;
+            border-radius: 12px;
+            border: 1px solid var(--glass-border);
+            min-width: 100px;
+        }
+
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--gray);
+        }
+
+        /* About Section */
+        .about {
+            background-color: var(--dark);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about::after {
+            content: '';
+            position: absolute;
+            bottom: -50%;
+            left: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 70%);
+            z-index: 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--gradient);
+            border-radius: 3px;
+        }
+
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (min-width: 992px) {
+            .about-content {
+                flex-direction: row;
+                align-items: center;
+            }
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+        }
+
+        .about-image-container {
+            flex: 1;
+            position: relative;
+        }
+
+        .about-image {
+            width: 100%;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .about-image:hover {
+            transform: scale(1.02);
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            border: 1px solid var(--glass-border);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            background: var(--card-bg-hover);
+            box-shadow: var(--shadow);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 15px;
+            background: var(--gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .feature-title {
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            background-color: var(--darker);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portfolio::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(245, 158, 11, 0.1) 0%, transparent 70%);
+            z-index: 0;
+        }
+
+        .portfolio-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .portfolio-controls {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+
+
+        .hero-image-container {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50%;
+            max-width: 700px;
+            z-index: 1;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: auto;
+            border-radius: 24px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--glass-border);
+        }
+
+        .hero-qr {
+            position: absolute;
+            bottom: -50px;
+            right: 100px;
+            background: white;
+            padding: 15px;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            z-index: 2;
+            animation: float 6s ease-in-out infinite;
+        }
+
+
+        
+
+        .portfolio-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            color: var(--light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .portfolio-btn:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .swiper {
+            width: 100%;
+            padding: 20px 0 60px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .portfolio-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            transition: var(--transition);
+            border: 1px solid var(--glass-border);
+            height: auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portfolio-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient);
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow);
+            background: var(--card-bg-hover);
+        }
+
+        .portfolio-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            z-index: 2;
+        }
+
+        .portfolio-image-container {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .portfolio-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .portfolio-card:hover .portfolio-image {
+            transform: scale(1.05);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(2, 6, 23, 0.9), transparent);
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .portfolio-card:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-title {
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .portfolio-desc {
+            margin-bottom: 20px;
+            min-height: 60px;
+        }
+
+        .portfolio-link {
+            color: var(--primary);
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+        }
+
+        .portfolio-link:hover {
+            color: var(--primary-light);
+            transform: translateX(5px);
+        }
+
+        .swiper-pagination-bullet {
+            background: var(--light);
+            opacity: 0.5;
+            width: 10px;
+            height: 10px;
+            transition: var(--transition);
+        }
+
+        .swiper-pagination-bullet-active {
+            background: var(--primary);
+            opacity: 1;
+            width: 30px;
+            border-radius: 10px;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            background-color: var(--dark);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing::after {
+            content: '';
+            position: absolute;
+            bottom: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+            z-index: 0;
+        }
+
+        .pricing-plans {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .plan {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            transition: var(--transition);
+            border: 1px solid var(--glass-border);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .plan:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow);
+        }
+
+        .plan.popular {
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+        }
+
+        .plan-popular {
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: var(--gradient);
+            color: white;
+            padding: 6px 20px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .plan-name {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .plan-price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: white;
+            display: flex;
+            align-items: flex-start;
+            line-height: 1;
+        }
+
+        .plan-price span {
+            font-size: 1rem;
+            color: var(--gray);
+            font-weight: 400;
+            margin-left: 5px;
+            margin-top: 5px;
+        }
+
+        .plan-features {
+            list-style: none;
+            margin-bottom: 30px;
+            flex-grow: 1;
+        }
+
+        .plan-feature {
+            padding: 8px 0;
+            color: var(--gray);
+            position: relative;
+            padding-left: 30px;
+            font-size: 0.95rem;
+        }
+
+        .plan-feature::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+        }
+
+        .plan-btn {
+            width: 100%;
+            margin-top: auto;
+        }
+
+        /* Order Section */
+        .order {
+            background: var(--gradient-accent);
+            color: white;
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .order::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgMTAwMCAxMDAwIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxnIGZpbGw9IiNmZmYiIG9wYWNpdHk9IjAuMDYiPjxwYXRoIGQ9Ik0xMDAwIDBIMHYxMDAwaDEwMDBWMHoiLz48L2c+PC9zdmc+');
+            opacity: 0.1;
+        }
+
+        .order-container {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .order-badge {
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .order-title {
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            margin-bottom: 15px;
+        }
+
+        .order-subtitle {
+            margin-bottom: 30px;
+            opacity: 0.9;
+            font-size: 1.125rem;
+        }
+
+        .order-form {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+
+        @media (min-width: 768px) {
+            .order-form {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .order-form .form-textarea {
+                grid-column: span 2;
+            }
+            
+            .order-form .form-submit {
+                grid-column: span 2;
+            }
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 16px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: var(--border-radius);
+            color: white;
+            font-size: 1rem;
+            transition: var(--transition);
+            backdrop-filter: blur(5px);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: white;
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-submit {
+            margin-top: 10px;
+            background: white;
+            color: var(--primary);
+            font-weight: 700;
+            border: none;
+        }
+
+        .form-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-note {
+            margin-top: 15px;
+            font-size: 0.75rem;
+            opacity: 0.8;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background-color: var(--darker);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonials::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 70%);
+            z-index: 0;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            border: 1px solid var(--glass-border);
+            transition: var(--transition);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .testimonial-stars {
+            color: var(--accent);
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: var(--light-gray);
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .testimonial-text::before {
+            content: '\201C';
+            position: absolute;
+            left: 0;
+            top: -10px;
+            font-size: 3rem;
+            color: var(--primary);
+            opacity: 0.3;
+            font-family: serif;
+            line-height: 1;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .author-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .author-info p {
+            font-size: 0.85rem;
+            color: var(--gray);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            padding: 80px 0 30px;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--primary), transparent);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-about {
+            margin-bottom: 20px;
+        }
+
+        .footer-logo {
+            font-size: 1.75rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-about p {
+            margin-bottom: 20px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--card-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            color: var(--light);
+        }
+
+        .social-link:hover {
+            background: var(--gradient);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .footer-links h3 {
+            font-size: 1.25rem;
+            margin-bottom: 20px;
+            color: white;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-links h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--gradient);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-link {
+            margin-bottom: 12px;
+        }
+
+        .footer-link a {
+            color: var(--gray);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-link a:hover {
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        .footer-link i {
+            font-size: 0.8rem;
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid var(--glass-border);
+            color: var(--gray);
+            font-size: 0.85rem;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            background: var(--dark);
+            padding: 20px;
+            transform: translateY(-150%);
+            transition: var(--transition);
+            z-index: 999;
+            border-bottom: 1px solid var(--glass-border);
+            box-shadow: var(--shadow);
+            opacity: 0;
+        }
+
+        .mobile-menu.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .mobile-menu-links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .mobile-menu-link {
+            color: var(--light-gray);
+            font-weight: 500;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--glass-border);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition);
+        }
+
+        .mobile-menu-link i {
+            width: 20px;
+            color: var(--primary);
+        }
+
+        .mobile-menu-link:hover {
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease forwards;
+        }
+
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+
+        .float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Responsive */
+        @media (min-width: 768px) {
+            .mobile-menu-btn {
+                display: none;
+            }
+            
+            .desktop-nav {
+                display: flex;
+                align-items: center;
+                gap: 30px;
+            }
+            
+            .hero-content {
+                text-align: left;
+                margin: 0;
+                max-width: 100%;
+            }
+            
+            .hero-actions {
+                justify-content: flex-start;
+            }
+            
+            .hero-stats {
+                justify-content: flex-start;
+            }
+
+             .hero-image-container {
+                position: relative;
+                width: 100%;
+                max-width: 500px;
+                margin: 50px auto 0;
+                transform: none;
+            }
+            
+            .section-header {
+                text-align: left;
+            }
+            
+            .section-title::after {
+                left: 0;
+                transform: none;
+            }
+            
+            .about-features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .testimonial-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 992px) {
+            .about-features {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .testimonial-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .app-download {
+                padding: 60px 30px;
+            }
+        }
+
+
+          /* App Download */
+        .app-download {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--dark) 100%);
+            border-radius: 24px;
+            padding: 80px 60px;
+            margin: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .app-download::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.1) 0%, transparent 70%);
+            z-index: 0;
+        }
+
+        .app-content {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .app-text {
+            flex: 1;
+        }
+
+        .app-title {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .app-subtitle {
+            color: var(--gray);
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        .app-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .app-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 12px 20px;
+            border-radius: 12px;
+            transition: var(--transition);
+        }
+
+        .app-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .app-btn-icon {
+            font-size: 1.5rem;
+        }
+
+        .app-btn-text small {
+            display: block;
+            font-size: 0.7rem;
+            color: var(--gray);
+        }
+
+        .app-btn-text span {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .app-qr {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .qr-container {
+            background: white;
+            padding: 20px;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .qr-code {
+            width: 55px;
+            height: 55px;
+            margin-bottom: 15px;
+        }
+
+        .qr-text {
+            color: var(--dark);
+            font-weight: 600;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background-color: var(--darker);
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .testimonial-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 30px;
+            transition: var(--transition);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow);
+            border-color: var(--primary);
+        }
+
+        .testimonial-stars {
+            color: var(--warning);
+            margin-bottom: 20px;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: var(--light-gray);
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+
+        .author-info p {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">
+                    <span>Мое портфолио</span>
+                </a>
+                
+                <div class="desktop-nav">
+                    <div class="nav-links">
+                        <a href="#about" class="nav-link">Обо мне</a>
+                        <a href="#portfolio" class="nav-link">Портфолио</a>
+                        <a href="#pricing" class="nav-link">Стэк</a>
+                        <a href="#testimonials" class="nav-link">Курсы</a>
+                        <a href="#order" class="btn btn-outline">Написать</a>
+                    </div>
+                </div>
+                
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="container">
+            <div class="mobile-menu-links">
+                <a href="#about" class="mobile-menu-link">
+                    <i class="fas fa-info-circle"></i> Обо мне
+                </a>
+                <a href="#portfolio" class="mobile-menu-link">
+                    <i class="fas fa-briefcase"></i> Портфолио
+                </a>
+                <a href="#pricing" class="mobile-menu-link">
+                    <i class="fas fa-tags"></i> Стэк
+                </a>
+                <a href="#testimonials" class="mobile-menu-link">
+                    <i class="fas fa-star"></i> Курсы
+                </a>
+                <a href="#order" class="mobile-menu-link">
+                    <i class="fas fa-paper-plane"></i> Написать мне
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title fade-in">Портфолио</h1>
+          <p class="hero-subtitle fade-in delay-1">
+  Привет👋! Меня зовут Владислав Тихоненко. Я занимаюсь веб-разработкой и управлением проектами. На этом сайте можно познакомиться со мной чуть-чуть подробнее...
+</p>
+                
+                <div class="hero-actions fade-in delay-2">
+                    <a href="#order" class="btn btn-primary">Связаться со мной</a>
+                    <a href="#portfolio" class="btn btn-outline">Мои работы</a>
+                </div>
+                
+                <div class="hero-stats fade-in delay-3">
+                <div class="stat-item">
+                    <div class="stat-number">70+</div>
+                    <div class="stat-label">Проектов</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">98%</div>
+                    <div class="stat-label">Довольных клиентов</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">2+</div>
+                    <div class="stat-label">Лет опыта</div>
+                </div>
+            </div>
+            </div>
+           
+        </div>
+        
+    </section>
+
+      <div class="hero-image-container">
+               
+            </div>
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Обо мне</h2>
+                <!-- <p class="section-subtitle">Команда профессионалов, создающая цифровые продукты будущего</p> -->
+            </div>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Уже несколько лет я занимаюсь разработкой и ведением проектов. Создаю проекты различной сложности. Занимаюсь как построением развития продукта, так и написанием backend и frontend под проект. Работаю как с аутсорс проектами, фриланс , так и с компаниями(ооо Трастон Технолоджи, SaveMobile, CryptoDesk, Ton Community Belarus).</p>
+                    <!-- <p>Наш подход сочетает в себе глубокие технические знания, креативное мышление и внимание к деталям. Мы не просто разрабатываем программное обеспечение - мы создаем инструменты, которые решают реальные бизнес-задачи.</p> -->
+<!--                     
+                    <div class="about-features">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <h3 class="feature-title">Инновации</h3>
+                            <p>Используем передовые технологии для создания уникальных решений</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-gem"></i>
+                            </div>
+                            <h3 class="feature-title">Качество</h3>
+                            <p>Гарантируем высокое качество и надежность наших продуктов</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <h3 class="feature-title">Скорость</h3>
+                            <p>Быстрая реализация проектов без потери качества</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-headset"></i>
+                            </div>
+                            <h3 class="feature-title">Поддержка</h3>
+                            <p>Комплексное сопровождение после запуска проекта</p>
+                        </div>
+                    </div>
+                </div> -->
+                
+                <div class="about-image-container">
+                     <img src="1.jpg" alt="Truston App" class="hero-image">
+                <div class="hero-qr">
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://t.me/Vlad_Tichonenko" alt="Telegram QR Code" width="120">
+</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio" id="portfolio">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Мои достижения:</h2>
+                <p class="section-subtitle">Посмотрите примеры моих работ</p>
+            </div>
+            
+            <div class="swiper">
+                <div class="swiper-wrapper">
+                    <!-- Slide 1 -->
+                    <div class="swiper-slide">
+                        <div class="portfolio-card">
+                            <span class="badge badge-new portfolio-badge">Новый</span>
+                            <div class="portfolio-image-container">
+                                <img src="https://www.park.by/upload/medialibrary/6f1/4txzs0eqsqu8l7ixw8240z0jv5hjrlip.PNG" alt="Парк высоких технологий" class="portfolio-image">
+                                <div class="portfolio-overlay">
+                                    <a href="https://www.park.by/press/news/akselerator_pvt_welcome_day_dlya_startap_proektov/" class="btn btn-primary">
+                                        Подробнее <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <h3 class="portfolio-title">Парк высоких технологий</h3>
+                            <p class="portfolio-desc">Участие в акселераторе ПВТ с нашим стартапом SaveX. 6 месяцев интенсивной работы с экспертами индустрии.Работал вкачестве разработчика и Faunder проекта.</p>
+                            <a href="https://www.park.by/press/news/akselerator_pvt_welcome_day_dlya_startap_proektov/" class="portfolio-link">
+                                Посмотреть проект <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 2 -->
+                    <div class="swiper-slide">
+                        <div class="portfolio-card">
+                            <div class="portfolio-image-container">
+                                <img src="Тихоненко Владислав-1.png" alt="Cryptodesk" class="portfolio-image">
+                                <div class="portfolio-overlay">
+                                    <a href="https://drive.google.com/file/d/1gjdsybkbLCcHswi3vQ-rTAENJeOIPpen/view" class="btn btn-primary">
+                                        Подробнее <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <h3 class="portfolio-title">Сбер Банк</h3>
+                            <p class="portfolio-desc">Проходил практику в Сбер на позиции разработчик в программе"СберПоколонение". Создавал ИИ помощника для сбербанк онлайн(Web-Разработка + распределение задач между всей командой).</p>
+                            <a href="https://drive.google.com/file/d/1gjdsybkbLCcHswi3vQ-rTAENJeOIPpen/view" class="portfolio-link">
+                                Посмотреть проект <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 3 -->
+                    <div class="swiper-slide">
+                        <div class="portfolio-card">
+                            <span class="badge badge-best portfolio-badge">Аутсорс</span>
+                            <div class="portfolio-image-container">
+                                <img src="https://expobel.by/upload/iblock/49d/bqa2myrvmhrxtylv9b3aiq1c7jne2nn9.jpg" alt="Save Mobile" class="portfolio-image">
+                                <div class="portfolio-overlay">
+                                    <a href="https://savemobile.by/" class="btn btn-primary">
+                                        Подробнее <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <h3 class="portfolio-title">Save Mobile</h3>
+                            <p class="portfolio-desc">Проект,который я создавал на заказ. Комплексная система управления для франшизы сотовых салонов с аналитикой и CRM-функционалом.</p>
+                            <a href="https://savemobile.by/" class="portfolio-link">
+                                Посмотреть проект <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+
+                    
+                    <!-- Slide 4 -->
+                    <div class="swiper-slide">
+                        <div class="portfolio-card">
+                            <div class="portfolio-image-container">
+                                <img src="5352807111417001030.jpg" alt="E-commerce" class="portfolio-image">
+                                <div class="portfolio-overlay">
+                                    <a href="https://sparkvs.by/" class="btn btn-primary">
+                                        Подробнее <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <h3 class="portfolio-title">Spark</h3>
+                            <p class="portfolio-desc">Был фронтенд разработчиком в проекте Importo, в акселераторе при поддержке Альфа Банка - Spark. Проект по переносу карточек товаров с одного маркетплейса на другой.</p>
+                            <a href="https://sparkvs.by/" class="portfolio-link">
+                                Посмотреть проект <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    
+
+
+                       <!-- Slide 5 -->
+                    <div class="swiper-slide">
+                        <div class="portfolio-card">
+                            <div class="portfolio-image-container">
+                                <img src="ишекн.jpg" alt="E-commerce" class="portfolio-image">
+                                <div class="portfolio-overlay">
+                                    <a href="https://t.me/ITtbcstudio/3" class="btn btn-primary">
+                                        Подробнее <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <h3 class="portfolio-title">BiTry-Studio</h3>
+                            <p class="portfolio-desc">Моя студия разработки, где мы с командой создаем новые продукты и реализовываем идеи заказчика. Уже больше двух лет я управляю студией, где работают более 7 человек.</p>
+                            <a href="https://t.me/ITtbcstudio/3" class="portfolio-link">
+                                Посмотреть проект <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                </div>
+
+
+               
+                
+                <!-- Add pagination -->
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Мои навыки</h2>
+                <p class="section-subtitle">Краткая информация про технологии и методологии</p>
+            </div>
+            
+            <div class="pricing-plans">
+                <div class="plan popular">
+                    <h3 class="plan-name">Web-Разработка</h3>
+                               <!-- <div class="plan-price">
+  <p style="display: inline; margin-right: 10px;">От</p>95$
+</div> -->
+                    <ul class="plan-features">
+                        <li class="plan-feature">python(Flask, Fast Api)</li>
+                        <li class="plan-feature">Умение работать с Rest-Api</li>
+                        <li class="plan-feature">Js, Ts, Базовые знания React</li>
+                        <li class="plan-feature">Базы данных: PosgreSQL, SqlLite</li>
+                        <li class="plan-feature">ООП, алгоритмика, OSI\ISO</li>
+                        <li class="plan-feature">Языки разметки: html , css , bootstrap</li>
+                        <li class="plan-feature">Прототипирование интерфейсов, разработка варфреймов</li>
+                        <li class="plan-feature">Git</li>
+                        <li class="plan-feature">PyTest</li>
+                        <li class="plan-feature">Figma, Photoshop</li>
+                    </ul>
+                    <a href="#order" class="btn btn-primary plan-btn">Написать мне</a>
+                </div>
+                
+                <div class="plan popular">
+                    <!-- <div class="plan-popular">Популярный</div> -->
+                    <h3 class="plan-name">PM</h3>
+                                 <!-- <div class="plan-price">
+  <p style="display: inline; margin-right: 10px;">От</p>400$
+</div> -->
+                    <ul class="plan-features">
+                        <li class="plan-feature">Разработка SDLC</li>
+                        <li class="plan-feature">Agile, Kanban</li>
+                        <li class="plan-feature">Разработка прототипов</li>
+                        <li class="plan-feature">UserCase, UserFlow диаграммы(FigJem, Draw IO)</li>
+                        <li class="plan-feature">Ведение задач: Notion</li>
+                        <li class="plan-feature">Ведение документации и отчетности: Гугл документы, Excel, Microsoft365</li>
+                         <li class="plan-feature">Сбор анализов и требований</li>
+                          <li class="plan-feature">Ведение разработки проекта</li>
+                           <li class="plan-feature">Координация работы команды (разработчики, дизайнеры, аналитики)</li>
+                            <li class="plan-feature">Управление backlog </li>
+
+                    </ul>
+                    <a href="#order" class="btn btn-primary plan-btn">Написать мне</a>
+                </div>
+                
+                <div class="plan popular">
+                    <h3 class="plan-name">Дополнительно</h3>
+                    <ul class="plan-features">
+                        <li class="plan-feature">Python(aoigram , Matplotlib, pandas, NumPy)</li>
+                        <li class="plan-feature">Java, C#- базовые знания</li>
+                        <li class="plan-feature">Работа с асинхроностью и потоками</li>
+                        <li class="plan-feature">Опыт работы с LLM, обучение ии(через Pytorch\ через промтирование)</li>
+                        <li class="plan-feature">SOLID</li>
+                         <li class="plan-feature">Иностранные языки: Польский(B1), Английский(A2+), Немецкий(А2)</li>
+                    </ul>
+                    <!-- <a href="#order" class="btn btn-primary plan-btn">Написать мне</a> -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Section -->
+    <section class="order" id="order">
+        <div class="container">
+            <div class="order-container">
+                <span class="badge badge-best order-badge">Подробнее</span>
+                <h2 class="order-title">Давайте знакомиться!</h2>
+                
+                <form class="order-form">
+                    <!-- <input type="text" class="form-input" placeholder="Ваше имя" required> -->
+                    <!-- <input type="tel" class="form-input" placeholder="Телефон или Telegram" required>
+                    <input type="email" class="form-input" placeholder="Email (необязательно)">
+                    <textarea class="form-input form-textarea" placeholder="Опишите ваш проект" rows="3"></textarea> -->
+                    <button type="submit" class="btn form-submit">
+                        <i class="fas fa-paper-plane"></i> Написать в Тг
+                    </button>
+                </form>
+                
+                <div class="form-note">
+                    Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Мои курсы:</h2>
+                <!-- <p class="section-subtitle">Что говорят о нашей работе</p> -->
+            </div>
+            
+         <div class="testimonial-grid">
+    <div class="testimonial-card">
+        <p class="testimonial-text">3х месячный курс по аналите данных в Т банке</p>
+        <div class="testimonial-author">
+            <img class="author-avatar" src="https://myfin.by/source/1/p1a6QNzdg1MV8wpbk5jGhXKzNa0_27iJ.png" alt="Гоша">
+            <div class="author-info">
+                <h4>Т банк</h4>
+                <p>Работа с данными, онлайн курс</p>
+            </div>
+        </div>
+    </div>
+</div>
+                <div class="testimonial-card">
+        <p class="testimonial-text">Управление продуктом. Лекции про построение дорожных карт, создание фин-модели и управлением команды.</p>
+        <div class="testimonial-author">
+            <img class="author-avatar" src="https://upload.wikimedia.org/wikipedia/commons/0/0a/%D0%91%D0%B5%D0%BB%D0%BE%D1%80%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9_%D0%BF%D0%B0%D1%80%D0%BA_%D0%B2%D1%8B%D1%81%D0%BE%D0%BA%D0%B8%D1%85_%D1%82%D0%B5%D1%85%D0%BD%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D0%B9.gif" alt="Гоша">
+            <div class="author-info">
+                <h4>ПВТ</h4>
+                <p>Офлайн лекции(40дней)</p>
+            </div>
+        </div>
+    </div>
+
+     <div class="testimonial-card">
+        <p class="testimonial-text">Python. Офлайн курсы по python Core.</p>
+        <div class="testimonial-author">
+            <img class="author-avatar" src="https://www.bsuir.by/m/12_100229_1_79523.jpg" alt="Гоша">
+            <div class="author-info">
+                <h4>БГУИР</h4>
+                <p>Офлайн курс</p>
+            </div>
+        </div>
+    </div>
+               
+               
+        </div>
+    </section>
+
+
+     <div class="container">
+        <div class="app-download">
+            <div class="app-content">
+                <div class="app-text">
+                    <h2 class="app-title">Я в соц-сетях</h2>
+                    <p class="app-subtitle">Новая информация про меня под рукой! Проекты, достижения, хаккатоны и просто мои хобби.</p>
+                    
+                    <div class="app-buttons">
+                        <a href="https:/t.me/Vlad_Tichonenko" class="app-btn">
+                            <i class="fa-brands fa-telegram"></i>
+                            <div class="app-btn-text">
+                                <small>go to channel</small>
+                                <span>Telegram</span>
+                            </div>
+                        </a>
+                        <a href="https://www.instagram.com/tihonenko_vlad?igsh=am51YmN3M21pOWxl" class="app-btn">
+                           <i class="fa-brands fa-instagram"></i>
+                            <div class="app-btn-text">
+                                <small>Get it on</small>
+                                <span>Instagram</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+<!--                 
+                <div class="app-qr">
+                    <div class="qr-container">
+                        <div class="qr-code">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://truston.ru/app" alt="QR код">
+                        </div>
+                        <p class="qr-text">Отсканируйте для загрузки</p>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <!-- <span>BiTry</span> -->
+                    </div>
+                    <!-- <p>Студия разработки IT-решений. Создаем боты, сайты, TMA, AI помощники и другое программное обеспечение для вашего бизнеса.</p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Услуги</h3>
+                    <ul>
+                        <li class="footer-link">
+                            <a href="#"><i class="fas fa-chevron-right"></i> Разработка чат-ботов</a>
+                        </li>
+                        <li class="footer-link">
+                            <a href="#"><i class="fas fa-chevron-right"></i> Telegram Mini Apps</a>
+                        </li>
+                        <li class="footer-link">
+                            <a href="#"><i class="fas fa-chevron-right"></i> Веб-разработка</a>
+                        </li>
+                        <li class="footer-link">
+                            <a href="#"><i class="fas fa-chevron-right"></i> AI решения</a>
+                        </li>
+                    </ul>
+                </div> -->
+                
+                <div class="footer-links">
+                    <h3>Контакты</h3>
+                    <ul>
+                        <li class="footer-link">
+                            <a href="mailto:info@bitry.studio"><i class="fas fa-envelope"></i> vlad6867911@gmail.com</a>
+                        </li>
+                        <li class="footer-link">
+                            <a href="tel:+375291234567"><i class="fas fa-phone"></i> +375 (33) 68-67-911</a>
+                        </li>
+                        <li class="footer-link">
+                            <a href="#"><i class="fas fa-map-marker-alt"></i> Минск, Беларусь</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <!-- <p>&copy; 2023 BiTry Studio. Все права защищены.</p> -->
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.getElementById('mobileMenu').classList.toggle('show');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.mobile-menu-link').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobileMenu').classList.remove('show');
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Initialize Swiper
+        const swiper = new Swiper('.swiper', {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 1.2,
+                },
+                768: {
+                    slidesPerView: 2,
+                },
+                1024: {
+                    slidesPerView: 3,
+                }
+            }
+        });
+
+        // Form submission
+        document.querySelector('.order-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Here you would typically send the form data to a server
+            // For demo purposes, we'll just show an alert
+           window.open('https://t.me/Vlad_Tichonenko')
+            this.reset();
+            
+            // Scroll to top after submission
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Animate elements on scroll
+        const animateOnScroll = function() {
+            const elements = document.querySelectorAll('.section-header, .feature-card, .portfolio-card, .plan, .testimonial-card');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+
+        // Set initial state for animated elements
+        document.querySelectorAll('.section-header, .feature-card, .portfolio-card, .plan, .testimonial-card').forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        });
+
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+    </script>
+</body>
+</html>
